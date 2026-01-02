@@ -18,7 +18,9 @@
         <p><b>Total Buku:</b> {{ $book->total_copies }}</p>
         <p><b>Tersedia:</b> {{ $book->available_copies }}</p>
 
-
+        <a href="{{ route('borrowings.create', $book) }}" class="btn btn-pink">
+            Pinjam Buku
+        </a>
     </div>
 </div>
 
