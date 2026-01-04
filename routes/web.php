@@ -51,6 +51,13 @@ Route::middleware(['auth', 'role:admin'])
     ->name('admin.')
     ->group(function () {
 
+        /*
+        | MANAJEMEN USER
+        */
+        Route::resource('users', UserController::class)
+            ->except(['show']);
+
+
 
 
         /*
