@@ -80,5 +80,14 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/jelajahi-buku', [BookController::class, 'browse'])
         ->name('books.browse');
 
+    
+    /*
+    | FAVORIT
+    */
+    Route::post('/favorites/{book}', [FavoriteController::class, 'toggle'])
+        ->name('favorites.toggle');
+
+    Route::get('/favorites', [FavoriteController::class, 'index'])
+        ->name('favorites.index');
 
 });
