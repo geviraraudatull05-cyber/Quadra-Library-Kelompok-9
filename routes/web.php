@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BorrowingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +60,6 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('users', UserController::class)
             ->except(['show']);
 
-
-
-
         /*
         | KATEGORI BUKU
         */
@@ -71,7 +71,11 @@ Route::middleware(['auth', 'role:admin'])
         */
         Route::resource('books', BookController::class);
 
-
+        /*
+        | PEMINJAMAN (LIHAT SEMUA SISWA)
+        */
+        Route::get('/borrowings', [BorrowingController::class, 'adminIndex'])
+            ->name('borrowings.index');
     });
 
 /*
@@ -87,7 +91,21 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/jelajahi-buku', [BookController::class, 'browse'])
         ->name('books.browse');
 
-    
+    /*
+    | PEMINJAMAN MILIK SISWA
+    */
+    Route::get('/borrowings', [BorrowingController::class, 'index'])
+        ->name('borrowings.index');
+
+    Route::get('/borrow/{book}', [BorrowingController::class, 'borrowForm'])
+        ->name('borrowings.create');
+
+    Route::post('/borrow', [BorrowingController::class, 'store'])
+        ->name('borrowings.store');
+
+    Route::post('/return/{borrowing}', [BorrowingController::class, 'returnBook'])
+        ->name('borrowings.return');
+
     /*
     | FAVORIT
     */
@@ -96,5 +114,4 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
 
     Route::get('/favorites', [FavoriteController::class, 'index'])
         ->name('favorites.index');
-
 });
