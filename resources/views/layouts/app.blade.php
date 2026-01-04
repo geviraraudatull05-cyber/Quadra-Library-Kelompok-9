@@ -61,6 +61,358 @@
         transition: var(--transition-smooth);
     }
 
+    /* ======================= GLOBAL THEME OVERRIDES ======================= */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(232, 67, 147, 0.08) 0%, transparent 35%),
+            radial-gradient(circle at 80% 0%, rgba(253, 121, 168, 0.08) 0%, transparent 30%),
+            radial-gradient(circle at 70% 70%, rgba(255, 158, 203, 0.1) 0%, transparent 35%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #2b1c2c;
+        letter-spacing: -0.2px;
+    }
+
+    .section-title {
+        font-weight: 800;
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        background: var(--pink-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .section-subtitle {
+        color: #6b5567;
+        font-weight: 500;
+    }
+
+    .card {
+        border: 1px solid rgba(232, 67, 147, 0.08);
+        border-radius: 18px;
+        box-shadow: var(--shadow-soft);
+        background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+        transition: var(--transition-smooth);
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-pink-hover);
+    }
+
+    .card-header {
+        border: none;
+        background: linear-gradient(135deg, #fff5fa 0%, #fff 100%);
+        color: var(--pink-dark);
+        font-weight: 700;
+    }
+
+    .card-footer {
+        border: none;
+        background: #fff7fb;
+    }
+
+    .table thead th {
+        border: none;
+        background: #ffe9f3;
+        color: #a62765;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.4px;
+    }
+
+    .table tbody tr:hover {
+        background: #fff2f8;
+    }
+
+    .badge {
+        border-radius: 999px;
+        padding: 0.45rem 0.75rem;
+        font-weight: 700;
+        background: var(--pink-light);
+        color: var(--pink-dark);
+    }
+
+    .form-control,
+    .form-select {
+        border: 1px solid rgba(232, 67, 147, 0.12);
+        border-radius: 12px;
+        padding: 0.65rem 0.9rem;
+        background: white;
+        transition: var(--transition-smooth);
+        box-shadow: none;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--pink-primary);
+        box-shadow: 0 0 0 0.2rem rgba(232, 67, 147, 0.18);
+    }
+
+    .form-control::placeholder {
+        color: #9c7b91;
+    }
+
+    .form-check-input:checked {
+        background-color: var(--pink-primary);
+        border-color: var(--pink-primary);
+        box-shadow: 0 4px 12px rgba(232, 67, 147, 0.3);
+    }
+
+    .input-group-text {
+        border: 1px solid rgba(232, 67, 147, 0.12);
+        background: #fff7fb;
+        color: var(--pink-dark);
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+    .btn {
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1px;
+    }
+
+    .btn-primary,
+    .btn-pink-premium,
+    .btn-pink {
+        background: var(--pink-gradient);
+        border: none;
+        box-shadow: var(--shadow-pink);
+        color: white;
+    }
+
+    .btn-primary:hover,
+    .btn-pink-premium:hover,
+    .btn-pink:hover {
+        background: var(--pink-gradient-reverse);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-pink-hover);
+        color: white;
+    }
+
+    .btn-outline-primary {
+        border: 1px solid var(--pink-primary);
+        color: var(--pink-primary);
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .btn-outline-primary:hover {
+        background: var(--pink-gradient);
+        color: white;
+        box-shadow: var(--shadow-pink);
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.45rem 0.85rem;
+        background: #fff4f9;
+        border: 1px solid rgba(232, 67, 147, 0.15);
+        border-radius: 999px;
+        color: var(--pink-dark);
+        font-weight: 600;
+    }
+
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 18px 40px rgba(232, 67, 147, 0.12);
+    }
+
+    .divider-pink {
+        width: 80px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--pink-gradient);
+        margin: 0.5rem 0 1rem;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+    }
+
+    .reveal-show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ======================= LAYOUT UTILITIES ======================= */
+    .page-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .page-header-modern {
+        background: linear-gradient(135deg, rgba(232, 67, 147, 0.12), rgba(253, 121, 168, 0.12));
+        border: 1px solid rgba(232, 67, 147, 0.15);
+        border-radius: 20px;
+        padding: clamp(1rem, 2vw, 1.5rem) clamp(1.2rem, 3vw, 1.75rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        box-shadow: 0 18px 40px rgba(232, 67, 147, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .page-header-modern::after {
+        content: '';
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(232, 67, 147, 0.18) 0%, transparent 60%);
+        top: -40px;
+        right: -70px;
+        filter: blur(12px);
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: #fff;
+        color: var(--pink-dark);
+        font-weight: 700;
+        font-size: 0.85rem;
+        box-shadow: 0 6px 18px rgba(232, 67, 147, 0.12);
+    }
+
+    .hero-title-strong {
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+        color: #2b1c2c;
+    }
+
+    .hero-subtitle {
+        color: #6b5567;
+        max-width: 660px;
+    }
+
+    .pill-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.65rem 1.25rem;
+        border-radius: 999px;
+        background: white;
+        border: 1px solid rgba(232, 67, 147, 0.12);
+        color: var(--pink-dark);
+        font-weight: 700;
+        box-shadow: 0 10px 24px rgba(232, 67, 147, 0.12);
+        transition: var(--transition-smooth);
+    }
+
+    .pill-action:hover {
+        transform: translateY(-2px);
+        border-color: rgba(232, 67, 147, 0.35);
+        box-shadow: var(--shadow-pink-hover);
+    }
+
+    .breadcrumb-soft {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.65rem 1rem;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid rgba(232, 67, 147, 0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        font-weight: 600;
+        color: #7a5a73;
+    }
+
+    .breadcrumb-soft i {
+        color: var(--pink-primary);
+    }
+
+    .surface-panel {
+        background: white;
+        border-radius: 20px;
+        border: 1px solid rgba(232, 67, 147, 0.12);
+        box-shadow: 0 18px 40px rgba(232, 67, 147, 0.08);
+    }
+
+    .surface-ghost {
+        background: linear-gradient(135deg, #fff9fd, #fff);
+        border: 1px dashed rgba(232, 67, 147, 0.28);
+        border-radius: 16px;
+    }
+
+    .accent-icon {
+        width: 48px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: var(--pink-gradient);
+        color: white;
+        box-shadow: 0 10px 25px rgba(232, 67, 147, 0.25);
+    }
+
+    .form-legend {
+        font-weight: 700;
+        color: var(--pink-dark);
+        margin-bottom: 0.2rem;
+    }
+
+    .helper-text {
+        color: #8c6f83;
+        font-size: 0.9rem;
+    }
+
+    .input-with-icon {
+        position: relative;
+    }
+
+    .input-with-icon i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--pink-primary);
+        opacity: 0.7;
+    }
+
+    .input-with-icon .form-control {
+        padding-left: 44px;
+    }
+
+    .floating-shape {
+        position: absolute;
+        inset: auto;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, rgba(232, 67, 147, 0.16) 0%, transparent 60%);
+        filter: blur(8px);
+        animation: floaty 8s ease-in-out infinite;
+        z-index: 0;
+    }
+
+    @keyframes floaty {
+        0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+        50% { transform: translateY(-16px) translateX(10px); opacity: 1; }
+        100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+    }
+
     /* ======================= NAVBAR PREMIUM ======================= */
     .navbar-premium {
         background: white;
@@ -1042,6 +1394,68 @@
         }
     }
 </style>
+
+<!-- Quadra Pagination Theme -->
+<style>
+.pagination-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-premium {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination-premium .page-item {
+    display: inline-flex;
+}
+
+.pagination-premium .page-link {
+    border: 1px solid rgba(255,79,154,0.3);
+    color: #c02866;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.pagination-premium .page-link:hover {
+    background: linear-gradient(120deg, #ff4f9a, #ff85b3);
+    color: #fff;
+    border-color: rgba(255,79,154,0.45);
+    box-shadow: 0 16px 30px rgba(255,79,154,0.25);
+}
+
+.pagination-premium .page-item.active .page-link {
+    background: linear-gradient(120deg, #ff4f9a, #ff85b3);
+    color: #fff;
+    border-color: rgba(255,79,154,0.45);
+    box-shadow: 0 16px 30px rgba(255,79,154,0.25);
+}
+
+.pagination-premium .page-item.disabled .page-link {
+    color: #b8b8c4;
+    border-color: #ece7ee;
+    background: #f9f7fb;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.pagination-summary {
+    font-size: 13px;
+    color: #7a2a57;
+}
+</style>
 </head>
 
 <body>
@@ -1085,11 +1499,27 @@
                                 </a>
                             </li>
 
+                            {{-- KELOLA USER --}}
+                            <li class="nav-item-premium">
+                                <a class="nav-link-premium {{ request()->routeIs('admin.users.*') ? 'active' : '' }}"
+                                href="{{ route('admin.users.index') }}">
+                                    <i class="fas fa-users fa-sm"></i> <span class="text-ellipsis">Kelola User</span>
+                                </a>
+                            </li>
+
                             {{-- KATEGORI BUKU --}}
                             <li class="nav-item-premium">
                                 <a class="nav-link-premium {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.categories.index') }}">
+                                href="{{ route('admin.categories.index') }}">
                                     <i class="fas fa-tags fa-sm"></i> <span class="text-ellipsis">Kategori</span>
+                                </a>
+                            </li>
+
+                            {{-- DATA PEMINJAMAN SISWA --}}
+                            <li class="nav-item-premium">
+                                <a class="nav-link-premium {{ request()->routeIs('admin.borrowings.*') ? 'active' : '' }}"
+                                href="{{ route('admin.borrowings.index') }}">
+                                    <i class="fas fa-clipboard-list fa-sm"></i> <span class="text-ellipsis">Data Peminjaman</span>
                                 </a>
                             </li>
 
@@ -1106,7 +1536,27 @@
                                 </a>
                             </li>
 
+                            {{-- FAVORIT --}}
+                            <li class="nav-item-premium">
+                                <a class="nav-link-premium {{ request()->routeIs('favorites.index') ? 'active' : '' }} favorite-badge"
+                                href="{{ route('favorites.index') }}">
+                                    <i class="fas fa-heart fa-sm"></i> <span class="text-ellipsis">Favorit</span>
+                                    @php
+                                        $favoriteCount = auth()->user()->favorites()->count();
+                                    @endphp
+                                    @if($favoriteCount > 0)
+                                        <span class="favorite-count">{{ $favoriteCount }}</span>
+                                    @endif
+                                </a>
+                            </li>
 
+                            {{-- PEMINJAMAN SISWA --}}
+                            <li class="nav-item-premium">
+                                <a class="nav-link-premium {{ request()->routeIs('borrowings.*') ? 'active' : '' }}"
+                                href="{{ route('borrowings.index') }}">
+                                    <i class="fas fa-book-reader fa-sm"></i> <span class="text-ellipsis">Peminjaman Saya</span>
+                                </a>
+                            </li>
 
                         @endif
 
@@ -1222,11 +1672,13 @@
                         <li><a href="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
                         @if(auth()->check() && auth()->user()->role === 'siswa')
                             <li><a href="{{ route('books.browse') }}"><i class="fas fa-search"></i> Jelajahi Buku</a></li>
-
+                            <li><a href="{{ route('favorites.index') }}"><i class="fas fa-heart"></i> Favorit</a></li>
+                            <li><a href="{{ route('borrowings.index') }}"><i class="fas fa-book-reader"></i> Peminjaman</a></li>
                         @endif
                         @if(auth()->check() && auth()->user()->role === 'admin')
                             <li><a href="{{ route('admin.books.index') }}"><i class="fas fa-book"></i> Kelola Buku</a></li>
                             <li><a href="{{ route('admin.categories.index') }}"><i class="fas fa-tags"></i> Kategori</a></li>
+                            <li><a href="{{ route('admin.borrowings.index') }}"><i class="fas fa-clipboard-list"></i> Data Peminjaman</a></li>
                         @endif
                     </ul>
                 </div>
@@ -1234,8 +1686,8 @@
                 <div class="footer-column">
                     <h5>Kontak Kami</h5>
                     <ul>
-                        <li><a href="https://maps.app.goo.gl/WRb5cx2PvsuWcD7Z9"><i class="fas fa-map-marker-alt"></i> Jl. Ketintang Baru, Surabaya</a></li>
-                        <li><a href="mailto:vira@gmail.com"><i class="fas fa-envelope"></i> vira@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123, Jakarta</a></li>
+                        <li><a href="mailto:info@quadralibrary.com"><i class="fas fa-envelope"></i> info@quadralibrary.com</a></li>
                         <li><a href="tel:+62123456789"><i class="fas fa-phone"></i> (021) 1234-5678</a></li>
                         <li><a href="#"><i class="fas fa-clock"></i> Buka: Senin - Jumat, 08:00 - 17:00</a></li>
                     </ul>
@@ -1502,6 +1954,22 @@
                 }, 1000);
             });
         }
+
+        // Reveal animation untuk komponen utama
+        const revealTargets = document.querySelectorAll('.reveal, .card, .table, form, .list-group, .alert, .badge, .btn-pink-premium');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-show');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealTargets.forEach(el => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
 
         // ================= MODAL FIXES =================
         // Fix untuk semua modal
